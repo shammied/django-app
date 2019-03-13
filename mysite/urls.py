@@ -15,21 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import requests
-my_domain = 'sd55.pythonanywhere.com'
-username = 'sd55'
-token = 'f8594b58636acfca44912b3afa7637d02b1ea1b9'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls)
 ]
-response = requests.post(
-  'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain}/reload/'.format(
-      username=username, domain=my_domain
-  ),
-  headers={'Authorization': 'Token {token}'.format(token=token)}
-)
-if response.status_code == 200:
-  print('All OK')
-else:
-  print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
